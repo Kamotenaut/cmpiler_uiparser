@@ -2,11 +2,9 @@ var jsonFile;
 var listOfControls = [];
 
 init();
-initUIControls();
 
 function Controls(name, type, x, y, width, height) {
-
-console.log("iterating");  this.name = name;
+  this.name = name;
   this.type = type;
   this.x = x;
   this.y = y;
@@ -16,37 +14,35 @@ console.log("iterating");  this.name = name;
 
 function init() {
   $.getJSON("http://localhost:3000/sample.json", function(data) {
-    var items = [];
-    $.each(data, function(key, val) {
-      items.push("<li id='" + key + "'>" + val + "</li>");
-    });
-    jsonFile = data;
+    setPageTitle(data.title);
+    $.each(data.controls, function(key, val) {
+      var tempUIControl = new Controls(val.name, val.type, val.x, val.y, val.width, val.height);
+      addUIControlButtion(tempUIControl);
+      //listOfControls.push(tempUIControl);
+      console.log(val.name)
+    })
+    console.log("current length of listofcontrols: " + listOfControls.length);
   });
-
+  //initUIControls();
 }
 
 function initUIControls() {
-  setPageTitle();
-  this.listOfControls = [];
-  $(document).ready(function() {
-    $.each(jsonFile.controls, function(key, val) {
-      listOfControls.push(new Controls(val.name, val.type, val.x, val.y, val.width, val.height))
-    })
-  })
   iterateThroughUIControls();
   console.log("read all the controls");
 }
 
-function setPageTitle() {
+function setPageTitle(title) {
   $(document).ready(function() {
-    document.title = jsonFile.title;
+    document.title = title;
   });
 }
 
 function iterateThroughUIControls() {
-  $.each(this.listOfControls, function(index, value) {
-    console.log(value);
-  })
+  console.log(listOfControls.length)
+  console.log(listOfControls)
+  $.each(listOfControls, function(index, value) {
+    console.log(value.name);
+  });
   console.log("iterating");
 }
 
@@ -54,5 +50,63 @@ function createUIControlElements() {
   var item = [];
   $.each(this.listOfControls, function(index, value) {
     console.log(value);
+  })
+}
+
+function addUIControlButtion(tempUIControl) {
+  $(document).ready(function() {
+    console.log(tempUIControl);
+    var $elem;
+    switch (tempUIControl.type) {
+      case "1":
+        console.log("Adding Button: " + tempUIControl.name);
+        $elem = $('<button/>', {
+          text: tempUIControl.name,
+          id: tempUIControl.name,
+          class: 'btn btn-primary'
+        });
+        $elem.css({
+          position: "absolute",
+          top: tempUIControl.y,
+          left: tempUIControl.x,
+          width: tempUIControl.width,
+          height: tempUIControl.height
+        });
+
+        break;
+      case "2":
+        $elem = $('<input/>', {
+          class: 'form-control',
+          type: 'text',
+          text: tempUIControl.name,
+          id: tempUIControl.name
+        });
+        $elem.css({
+          position: "absolute",
+          top: tempUIControl.y,
+          left: tempUIControl.x,
+          width: tempUIControl.width,
+          height: tempUIControl.height
+        });
+        console.log("Adding Textbox: " + tempUIControl.name);
+        break;
+      case "3":
+        $elem = $('<input/>', {
+          class: 'form-control',
+          type: 'text',
+          text: tempUIControl.name,
+          id: tempUIControl.name
+        });
+        $elem.css({
+          position: "absolute",
+          top: tempUIControl.y,
+          left: tempUIControl.x,
+          width: tempUIControl.width,
+          height: tempUIControl.height
+        });
+        console.log("Adding Label: " + tempUIControl.name);
+        break;
+    }
+    $('.container').append($elem);
   })
 }
