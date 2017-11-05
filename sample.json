@@ -1,0 +1,21 @@
+{
+  "title": "test form",
+  "controls": [
+    {
+      "name": "btnTest1",
+      "type": "1",
+      "x": "0",
+      "y": "0",
+      "width": "100",
+      "height": "100"
+    },
+    {
+      "name": "btnTest2",
+      "type": "1",
+      "x": "0",
+      "y": "0",
+      "width": "100",
+      "height": "100"
+    }
+  ]
+}
