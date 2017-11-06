@@ -1,9 +1,10 @@
 {
   "name": "cmpiler_uiparser",
   "version": "1.0.0",
-  "description": "",
+  "description": "Instructions:\r 1. Install Node.js (This is used to host the json file).\r 2. run npm init\r 3. hit enter until you encounter 'yes', in which you enter yes and pressing enter once again\r 4. run npm install --save express \r 5. run node app.js",
   "main": "index.js",
   "scripts": {
+    "start" : "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,5 +12,13 @@
   "dependencies": {
     "express": "^4.16.2",
     "jsonfile": "^4.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kamotenaut/cmpiler_uiparser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kamotenaut/cmpiler_uiparser/issues"
+  },
+  "homepage": "https://github.com/Kamotenaut/cmpiler_uiparser#readme"
 }
