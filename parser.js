@@ -144,7 +144,7 @@ function createUIControlTextBox(textUI, nameUI, yUI, xUI, widthUI, heightUI) {
   $elem = $('<input/>', {
     class: 'form-control',
     type: 'text',
-    text: textUI,
+    value: textUI,
     id: nameUI
   });
   $elem.css({
@@ -163,7 +163,7 @@ function createUIControlTextBox(textUI, yUI, xUI, widthUI, heightUI) {
   $elem = $('<input/>', {
     class: 'form-control',
     type: 'text',
-    text: textUI
+    value: textUI
   });
   $elem.css({
     position: "absolute",
